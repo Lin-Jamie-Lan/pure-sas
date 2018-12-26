@@ -6,7 +6,7 @@ delete
 scan
 tranwrd
 left
-
+||
 substr
 compress - remove all the blanks 
 reverse
@@ -118,7 +118,7 @@ run;
 /*concat*/
 data abc6;
 set abc5;
-concat = scan_fun // left_fun;
+concat = scan_fun || left_fun;
 run;
 
 /* TRIM(source)
@@ -166,7 +166,16 @@ data qqq;
   length text $15;
   format text $char15.;
   text = " ab cde f   ';
-  trim = "*" //trim(text)
+  trim = "*" ||trim(text)||"*";
+  compress = "*"||compress(text)||"*";
+  strip="*"||strip(text)||"*";
+  put trim=;
+  put compress=;
+  put strip=;
+run;
+
+data zxc;
+    length
 
 
 
