@@ -118,8 +118,55 @@ run;
 /*concat*/
 data abc6;
 set abc5;
-concat = scan_fun 
+concat = scan_fun // left_fun;
+run;
 
+/* TRIM(source)
+The TRIM function produces a value without the trailing blanks in the source.
+
+AllGate2 = trim (USGate)
+*/
+
+SUBSTR (TIN, 1,3) IN ('000','999');
+TIN = compress (reverse(substr(reverse(compress(REF_NUM)), 1, min(length(compress(REF_NUM)),9))));
+
+%LET var1= '  hi ';
+%LET var2= compress(var1);
+
+data qwe;
+input name $0-20;
+datalines;
+    Gurd
+    ;
+run;
+
+data qwe2;
+set qwe;
+compress_func=compress(name);
+run;
+
+data qwe2;
+set qwe;
+reverse_func=reverse(name);
+run;
+
+data qwe2;
+set qwe;
+reverse_func=reverse(name);
+reverse_comp_func=reverse(compress(name));
+run;
+
+/*
+STRIP function - remove all leading and trailing blanks
+TRIM function - removes all trailing blanks
+COMPRESS function - removes all blanks (by default - specify options to remove other chars)
+*/
+
+data qqq;
+  length text $15;
+  format text $char15.;
+  text = " ab cde f   ';
+  trim = "*"
 
 
 
