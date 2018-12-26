@@ -166,7 +166,7 @@ data qqq;
   length text $15;
   format text $char15.;
   text = " ab cde f   ';
-  trim = "*"
+  trim = "*" //trim(text)
 
 
 
