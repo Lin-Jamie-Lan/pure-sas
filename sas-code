@@ -1,0 +1,33 @@
+/*
+input data using datalines
+proc print
+obs/firstobs/lastobs
+delete
+scan
+tranwrd
+left
+
+substr
+compress - remove all the blanks 
+reverse
+length
+strip - leading and trailing blanks
+trim - trailing blanks
+CATS - remove leading and trailing
+CATX - remove trailing 
+CATT - remove leading and trailing and place single space
+lastobs 
+rownumber=_n_
+retain
+lag
+put and input functino
+if/else do loops
+intxn function - increment and subtract (day, month and year)
+intck function - difference in two dates
+extract day, month and year
+*/
+
+/******************************************/
+data abc;
+input id name $4-20 age team $ start_weight end_weight;
+L
