@@ -30,4 +30,106 @@ extract day, month and year
 /******************************************/
 data abc;
 input id name $4-20 age team $ start_weight end_weight;
-L
+Loss = end_weight-start_weight;
+datalines;
+101 Gurdeep Singh  34 red 100 200
+102 Lin Lan 23 green 300 400
+103 Romit.Bhatia  22 black 10 200
+;
+run;
+
+/*****************************************/
+proc print data=abc;
+title abc;
+run;
+
+/****************************************/
+data scores;
+input Name $ Test_1 Test_2 Test_3;
+datalines;
+Bill 187 97 103
+Carlos 156 76 74
+Monique 99 102 129
+;
+
+/*Read from 10th to 15th obs */
+data city2;
+set city(firstobs=10 obs=15);
+run;
+
+proc print;
+
+title 'City Expenditures';
+title2 '1991-2000';
+run;
+
+/*keep selected values*/
+
+data services;
+set scores (keep=Name Test_1 Test_2);
+run;
+
+data services2;
+set services;
+drop Test_2;
+run;
+
+proc print data=services2;
+run; 
+
+/*if-else statement*/
+
+data abc2;
+set abc;
+if team='red' then flag="For 10 people";
+else if team = 'green' then flag = 'Yes';
+else if team = 'black' then flag2 = 'For 30 people";
+run;
+
+/*length*/
+data abc4;
+length Airport $ 10;
+set abc;
+if team='red' then Airport ="SFO";
+else if team = 'green' then Airport = "HNL";
+else if team = 'black' then Airport = "JFK or LGA";
+run; 
+
+/* delete */
+data abc3; 
+set abc;
+if team = 'red' then delete;
+run;
+
+/* scan=SCAN(source, n<, list-of-delimiters>)
+
+LEFT(source)
+The LEFT function produces a value that has all leading blanks in the source moved to the right side of the value; 
+therefore, the result is left aligned.
+*/
+
+data abc5;
+set abc;
+scan_fun=scan(name, 1, ' ');
+left_fun = left(scan(name, 2, ' '));
+name2=tranwrd(name, "Gurdeep", "GD");
+run;
+
+/*concat*/
+data abc6;
+set abc5;
+concat = scan_fun 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
