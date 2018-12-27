@@ -175,7 +175,37 @@ data qqq;
 run;
 
 data zxc;
-    length
+    length text1 $15 text2 $15 text3 $15 text4 $15;
+    format text1 $char15. text2 $char15. text3 $char15. text4 $char15.;
+    text1 = "ABC";
+        text2 = 'CONSULTING";
+        text3 = "INC";
+        text4 = "  TEAM  ";
+        trim1 = CATS(RESULT, text1, text2, text3, text4);
+        put trim= ;
+            trim2 = CATT(RESULT, text1, text2, text3, text4);
+        put trim2 = ;
+            trim3 = CATX (',', RESULT, text1, text2, text3, text4);
+        put trim3= l 
+            
+            drop RESULT;
+run; 
+
+/* if - else index */
+
+data abc1;
+set abc;
+
+if team = 'red' then start_weight = start_weight + 30;
+else if team = 'black' then start_weight = start_weight + 70;
+
+if team = 'green' then Calendar = 'Check schedule';
+else Calendar = 'No problems';
+
+if index (team, 'green')>0 then OtherEvents = 'Yes';
+else OtherEvents = 'No' ;
+
+
 
 
 
